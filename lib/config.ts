@@ -15,11 +15,16 @@ export const CONTACT = {
   viber: `viber://chat?number=%2B${PHONE_DIGITS}`,
   // Telegram — username unknown, fall back to phone-based link (easy to swap for @username later)
   telegram: `https://t.me/+${PHONE_DIGITS}`,
-  email: "info@kepsha.vip",
+  email: "mykhailo.kepsha@seznam.cz",
 } as const;
 
 export const BRAND = {
   name: "Kepsha.VIP",
   domain: "kepsha.vip",
   url: "https://kepsha.vip",
+  owner: "Mykhailo",
 } as const;
+
+// Web3Forms access key — receives request-form submissions by e-mail.
+// Get/replace the key at https://web3forms.com (linked to the address above).
+export const WEB3FORMS_KEY = "6bec3a6a-f0c6-4ab7-8a0b-d4164d021592";

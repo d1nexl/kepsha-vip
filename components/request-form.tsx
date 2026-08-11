@@ -1,8 +1,9 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowUpRight, Check, CheckCircle2, Loader2 } from "lucide-react";
+import { AlertCircle, ArrowUpRight, Check, CheckCircle2, Loader2 } from "lucide-react";
 import { useState } from "react";
+import { WEB3FORMS_KEY } from "@/lib/config";
 import { useI18n } from "@/lib/i18n-context";
 import { Reveal } from "./primitives";
 
@@ -36,7 +37,7 @@ export function RequestForm() {
   const { t } = useI18n();
   const [data, setData] = useState<FormState>(EMPTY);
   const [errors, setErrors] = useState<Errors>({});
-  const [status, setStatus] = useState<"idle" | "sending" | "success">("idle");
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
 
   function update<K extends keyof FormState>(key: K, value: FormState[K]) {
     setData((d) => ({ ...d, [key]: value }));
@@ -64,9 +65,33 @@ export function RequestForm() {
       return;
     }
     setStatus("sending");
-    // Simulate async submission — swap for real endpoint (e.g. /api/lead or email service)
-    await new Promise((r) => setTimeout(r, 1100));
-    setStatus("success");
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: `Nová poptávka z webu — ${data.service}`,
+          from_name: "Kepsha.VIP",
+          name: data.name,
+          phone: data.phone,
+          email: data.email || "—",
+          service: data.service,
+          from: data.from || "—",
+          to: data.to || "—",
+          date: data.date || "—",
+          message: data.message || "—",
+        }),
+      });
+      const json = await res.json();
+      if (json.success) {
+        setStatus("success");
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
   }
 
   function reset() {
@@ -267,6 +292,12 @@ export function RequestForm() {
                     </div>
 
                     <div className="sm:col-span-2">
+                      {status === "error" && (
+                        <p className="mb-3 flex items-center gap-2 rounded-xl border border-red-500/40 bg-red-500/10 px-4 py-3 text-sm text-red-300" role="alert">
+                          <AlertCircle className="h-4 w-4 shrink-0" />
+                          {t.form.submitError}
+                        </p>
+                      )}
                       <button type="submit" disabled={status === "sending"} className="btn-signal group w-full text-base disabled:opacity-70">
                         {status === "sending" ? (
                           <>

@@ -62,7 +62,10 @@ export interface Dictionary {
     label: string;
     title: string;
     statement: string[];
+    lead: string;
+    lead2: string;
     items: string[];
+    owner: { quote: string; name: string; role: string };
   };
   process: {
     label: string;
@@ -114,6 +117,7 @@ export interface Dictionary {
     sending: string;
     consent: string;
     success: { title: string; text: string; again: string };
+    submitError: string;
     errors: {
       name: string;
       phone: string;
@@ -233,6 +237,8 @@ export const dictionaries: Record<Locale, Dictionary> = {
       label: "Proč Kepsha.VIP",
       title: "Proč si vybrat právě nás",
       statement: ["Jedna domluva.", "Jeden tým.", "Hotovo."],
+      lead: "Za Kepsha.VIP nestojí anonymní firma, ale lidé, kteří k vašim věcem přistupují jako ke svým. Každé stěhování i vyklizení řešíme osobně — od prvního telefonu až po poslední přenesenou krabici.",
+      lead2: "Nepracujeme na počet, ale na to, abyste nás doporučili dál. Jednáme na rovinu, držíme slovo i termín a cenu domluvíme předem — bez překvapení a skrytých poplatků. Vaše věci vezeme opatrně, jako by byly naše.",
       items: [
         "Rychlá domluva",
         "Férové jednání",
@@ -243,6 +249,11 @@ export const dictionaries: Record<Locale, Dictionary> = {
         "Pomoc s nakládkou a vykládkou",
         "Komunikace 7 dní v týdnu",
       ],
+      owner: {
+        quote: "Ke každé zakázce přistupuji tak, jako bych stěhoval vlastní domov. Když nám zavoláte, ozve se vám člověk, který za odvedenou práci osobně ručí.",
+        name: "Mykhailo",
+        role: "zakladatel Kepsha.VIP",
+      },
     },
     process: {
       label: "Jak to funguje",
@@ -311,6 +322,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
         text: "Vaše poptávka byla odeslána. Brzy se vám ozveme.",
         again: "Odeslat další poptávku",
       },
+      submitError: "Poptávku se nepodařilo odeslat. Zkuste to prosím znovu, nebo nám zavolejte.",
       errors: {
         name: "Zadejte prosím jméno.",
         phone: "Zadejte platné telefonní číslo.",
@@ -410,6 +422,8 @@ export const dictionaries: Record<Locale, Dictionary> = {
       label: "Why Kepsha.VIP",
       title: "Why choose us",
       statement: ["One call.", "One team.", "Done."],
+      lead: "Kepsha.VIP isn't a faceless company — we're people who treat your belongings as our own. Every move and every clearance is handled personally, from the first phone call to the last box carried in.",
+      lead2: "We don't work for volume — we work so you'll recommend us. We're straight with you, we keep our word and our schedule, and we agree the price upfront — no surprises, no hidden fees. Your things travel carefully, as if they were ours.",
       items: [
         "Fast response",
         "Fair dealing",
@@ -420,6 +434,11 @@ export const dictionaries: Record<Locale, Dictionary> = {
         "Help with loading & unloading",
         "Available 7 days a week",
       ],
+      owner: {
+        quote: "I treat every job as if I were moving my own home. When you call us, you reach a person who personally stands behind the work.",
+        name: "Mykhailo",
+        role: "founder of Kepsha.VIP",
+      },
     },
     process: {
       label: "How it works",
@@ -488,6 +507,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
         text: "Your request has been sent. We'll be in touch shortly.",
         again: "Send another request",
       },
+      submitError: "We couldn't send your request. Please try again, or give us a call.",
       errors: {
         name: "Please enter your name.",
         phone: "Please enter a valid phone number.",
@@ -587,6 +607,8 @@ export const dictionaries: Record<Locale, Dictionary> = {
       label: "Чому Kepsha.VIP",
       title: "Чому обирають нас",
       statement: ["Одна домовленість.", "Одна команда.", "Готово."],
+      lead: "За Kepsha.VIP стоїть не безлика фірма, а люди, які ставляться до ваших речей як до власних. Кожен переїзд і кожне вивезення ми ведемо особисто — від першого дзвінка до останньої перенесеної коробки.",
+      lead2: "Ми працюємо не на кількість, а на те, щоб ви рекомендували нас далі. Говоримо прямо, тримаємо слово й термін, а ціну узгоджуємо заздалегідь — без сюрпризів і прихованих платежів. Ваші речі веземо обережно, ніби вони наші.",
       items: [
         "Швидка відповідь",
         "Чесні умови",
@@ -597,6 +619,11 @@ export const dictionaries: Record<Locale, Dictionary> = {
         "Допомога із завантаженням",
         "На звʼязку 7 днів на тиждень",
       ],
+      owner: {
+        quote: "До кожного замовлення я ставлюся так, ніби переношу власну домівку. Коли ви телефонуєте нам, вам відповідає людина, яка особисто відповідає за виконану роботу.",
+        name: "Михайло",
+        role: "засновник Kepsha.VIP",
+      },
     },
     process: {
       label: "Як це працює",
@@ -665,6 +692,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
         text: "Вашу заявку надіслано. Ми скоро звʼяжемося з вами.",
         again: "Надіслати ще одну заявку",
       },
+      submitError: "Не вдалося надіслати заявку. Спробуйте ще раз або зателефонуйте нам.",
       errors: {
         name: "Будь ласка, вкажіть імʼя.",
         phone: "Вкажіть коректний номер телефону.",
@@ -764,6 +792,8 @@ export const dictionaries: Record<Locale, Dictionary> = {
       label: "Почему Kepsha.VIP",
       title: "Почему выбирают нас",
       statement: ["Одна договорённость.", "Одна команда.", "Готово."],
+      lead: "За Kepsha.VIP стоит не безликая фирма, а люди, которые относятся к вашим вещам как к своим. Каждый переезд и каждый вывоз мы ведём лично — от первого звонка до последней перенесённой коробки.",
+      lead2: "Мы работаем не на количество, а на то, чтобы вы рекомендовали нас дальше. Говорим прямо, держим слово и срок, а цену согласуем заранее — без сюрпризов и скрытых платежей. Ваши вещи везём аккуратно, будто они наши.",
       items: [
         "Быстрый ответ",
         "Честные условия",
@@ -774,6 +804,11 @@ export const dictionaries: Record<Locale, Dictionary> = {
         "Помощь с погрузкой",
         "На связи 7 дней в неделю",
       ],
+      owner: {
+        quote: "К каждому заказу я отношусь так, будто перевожу собственный дом. Когда вы звоните нам, вам отвечает человек, который лично отвечает за выполненную работу.",
+        name: "Михаил",
+        role: "основатель Kepsha.VIP",
+      },
     },
     process: {
       label: "Как это работает",
@@ -842,6 +877,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
         text: "Ваша заявка отправлена. Мы скоро свяжемся с вами.",
         again: "Отправить ещё одну заявку",
       },
+      submitError: "Не удалось отправить заявку. Попробуйте ещё раз или позвоните нам.",
       errors: {
         name: "Пожалуйста, укажите имя.",
         phone: "Укажите корректный номер телефона.",
