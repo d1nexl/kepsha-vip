@@ -152,6 +152,7 @@ export interface Dictionary {
     privacy: string;
     rights: string;
     coverage: string;
+    createdBy: string;
   };
 }
 
@@ -363,6 +364,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       privacy: "Ochrana osobních údajů",
       rights: "Všechna práva vyhrazena.",
       coverage: "Působíme po celé ČR i v Evropě",
+      createdBy: "Vytvořeno",
     },
   },
 
@@ -548,6 +550,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       privacy: "Privacy policy",
       rights: "All rights reserved.",
       coverage: "Operating across Czechia & Europe",
+      createdBy: "Created by",
     },
   },
 
@@ -733,6 +736,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       privacy: "Захист персональних даних",
       rights: "Усі права захищено.",
       coverage: "Працюємо по всій Чехії та Європі",
+      createdBy: "Створено",
     },
   },
 
@@ -918,6 +922,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       privacy: "Защита персональных данных",
       rights: "Все права защищены.",
       coverage: "Работаем по всей Чехии и Европе",
+      createdBy: "Создано",
     },
   },
 };

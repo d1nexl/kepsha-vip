@@ -1,6 +1,6 @@
 "use client";
 
-import { Phone } from "lucide-react";
+import { ArrowUpRight, Phone } from "lucide-react";
 import { BRAND, CONTACT } from "@/lib/config";
 import { useI18n } from "@/lib/i18n-context";
 import { LanguageSwitcher } from "./language-switcher";
@@ -89,6 +89,21 @@ export function Footer() {
             {t.footer.coverage}
           </p>
         </div>
+
+        {/* Subtle studio credit */}
+        <p className="mt-5 text-center text-xs text-bone-dim">
+          {t.footer.createdBy}{" "}
+          <a
+            href="https://getnovaflow.eu"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Nova Flow — getnovaflow.eu"
+            className="group ml-0.5 inline-flex items-center gap-1 font-medium text-bone-muted transition-colors hover:text-signal"
+          >
+            Nova&nbsp;Flow
+            <ArrowUpRight className="h-3 w-3 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </a>
+        </p>
       </div>
     </footer>
   );
