@@ -20,11 +20,17 @@ export const CONTACT = {
 
 export const BRAND = {
   name: "Kepsha.VIP",
-  domain: "kepsha.vip",
-  url: "https://kepsha.vip",
+  domain: "kepsha-vip.cz",
+  url: "https://kepsha-vip.cz",
   owner: "Mykhailo",
 } as const;
 
 // Web3Forms access key — receives request-form submissions by e-mail.
 // Get/replace the key at https://web3forms.com (linked to the address above).
 export const WEB3FORMS_KEY = "6bec3a6a-f0c6-4ab7-8a0b-d4164d021592";
+
+// Google Search Console verification token.
+// In GSC choose the "HTML tag" method and paste ONLY the content value here
+// (e.g. "abc123..."). It renders as <meta name="google-site-verification">.
+// Leave empty to omit the tag (you can also verify via DNS TXT instead).
+export const GOOGLE_SITE_VERIFICATION = "";

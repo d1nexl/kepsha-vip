@@ -42,9 +42,21 @@ All phone numbers and messenger deep links are in [`lib/config.ts`](lib/config.t
 
 ## Form submissions
 
-The request form ([`components/request-form.tsx`](components/request-form.tsx)) currently simulates submission (client-side success state). To receive real leads, replace the `await new Promise(...)` in `onSubmit` with a POST to your endpoint / email service (e.g. Resend, Formspree, or a Next.js API route).
+The request form ([`components/request-form.tsx`](components/request-form.tsx)) posts to **Web3Forms**; leads are e-mailed to the address configured in [`lib/config.ts`](lib/config.ts). The access key lives in the same file (`WEB3FORMS_KEY`). Confirm the key once via the activation e-mail Web3Forms sends on the first submission.
 
 ## Accessibility & SEO
 
 - Semantic HTML, heading hierarchy, aria labels, keyboard-navigable, visible focus, `prefers-reduced-motion` support, skip link.
-- Per-locale `<title>` / meta description, Open Graph, SVG favicon, and `MovingCompany` JSON-LD structured data.
+- Rich metadata + keywords, canonical URL, Open Graph + Twitter cards, auto-generated OG image ([`app/opengraph-image.tsx`](app/opengraph-image.tsx)), and `MovingCompany` JSON-LD (services, service area, contact point, languages).
+- `robots.txt` ([`app/robots.ts`](app/robots.ts)), `sitemap.xml` ([`app/sitemap.ts`](app/sitemap.ts)), and a web manifest ([`app/manifest.ts`](app/manifest.ts)) are generated automatically.
+
+### Domain
+
+The production domain is **kepsha-vip.cz**, set once in [`lib/config.ts`](lib/config.ts) (`BRAND.url`). Everything else (canonical, OG, sitemap, robots, JSON-LD) derives from it — change it there if the domain ever moves.
+
+### Google Search Console
+
+1. Deploy the site to the live domain (Vercel → add `kepsha-vip.cz`).
+2. In [Search Console](https://search.google.com/search-console) add the property. Easiest: **HTML tag** method — copy the `content` value and paste it into `GOOGLE_SITE_VERIFICATION` in [`lib/config.ts`](lib/config.ts), then redeploy. (Or verify by **DNS TXT** at your registrar — no code change needed.)
+3. After verification, submit the sitemap: `https://kepsha-vip.cz/sitemap.xml`.
+4. Use **URL Inspection → Request indexing** for the homepage to speed up first indexing.
