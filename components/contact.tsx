@@ -94,7 +94,7 @@ function InfoItem({
         <span className="text-signal">{icon}</span>
         <span className="text-xs uppercase tracking-widest">{label}</span>
       </span>
-      <span className="font-medium text-bone">{value}</span>
+      <span className="break-words font-medium text-bone [overflow-wrap:anywhere]">{value}</span>
     </div>
   );
   return href ? (
